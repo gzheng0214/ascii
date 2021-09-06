@@ -19,16 +19,18 @@ const PORT = process.env.PORT || 3000;
   }
 })();
 
-nextApp
-  .prepare()
-  .then(() => {
+(async function () {
+  try {
+    await nextApp.prepare();
+    app.use("/api/register", require("./api/register"));
+    //app.use("/api/auth", require("./api/auth"));
     app.all("*", (req, res) => handle(req, res));
     app.listen(PORT, (err) => {
       if (err) throw err;
       console.log(`Server running on port ${PORT}`);
     });
-  })
-  .catch((err) => {
-    console.error(err);
+  } catch (e) {
+    console.error(e);
     process.exit(1);
-  });
+  }
+})();
