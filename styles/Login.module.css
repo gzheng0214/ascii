@@ -1,0 +1,22 @@
+.login {
+  width: 100%;
+  height: calc(100vh - 6.4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form > *:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.form input,
+.form button {
+  font-size: 1.8rem;
+}

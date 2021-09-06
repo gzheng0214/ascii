@@ -1,0 +1,11 @@
+.toolbar {
+  justify-content: end;
+}
+
+.toolbar button {
+  font-size: 1.8rem !important;
+}
+
+.toolbar button:not(:last-child) {
+  margin-right: 3rem;
+}
