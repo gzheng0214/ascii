@@ -13,11 +13,13 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.5",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-toastify": "^8.0.2",
     "validator": "^13.6.0"
   },
   "devDependencies": {

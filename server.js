@@ -23,7 +23,7 @@ const PORT = process.env.PORT || 3000;
   try {
     await nextApp.prepare();
     app.use("/api/register", require("./api/register"));
-    //app.use("/api/auth", require("./api/auth"));
+    app.use("/api/auth", require("./api/auth"));
     app.all("*", (req, res) => handle(req, res));
     app.listen(PORT, (err) => {
       if (err) throw err;
