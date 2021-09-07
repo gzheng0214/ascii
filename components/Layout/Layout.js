@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Navbar from "../Navbar/Navbar";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, user }) => {
   return (
     <>
       <Head>
@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
       </Head>
 
       <div>
-        <Navbar />
+        <Navbar user={user} />
         {children}
       </div>
     </>
