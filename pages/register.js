@@ -10,6 +10,7 @@ import * as styles from "../styles/Login.module.css";
 import Button from "@material-ui/core/Button";
 import { register } from "../utils/authUser";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 const RegisterPage = () => {
   const [user, setUser] = useState({
@@ -96,6 +97,9 @@ const RegisterPage = () => {
           Register
         </Button>
       </form>
+      <span className={styles.text}>
+        Already have an account? <Link href="/login">Login here</Link>
+      </span>
     </div>
   );
 };

@@ -36,6 +36,7 @@ export const login = async (user, setError, setLoading) => {
       },
       body: JSON.stringify(user),
     });
+    let data;
     if (!res.ok) {
       data = await res.text();
       throw new Error(data);
@@ -48,6 +49,12 @@ export const login = async (user, setError, setLoading) => {
     setError(errorMsg);
   }
   setLoading(false);
+};
+
+export const logout = () => {
+  cookie.remove("token");
+  Router.push("/login");
+  Router.reload();
 };
 
 const getErrorMessage = (e) => {
@@ -65,4 +72,13 @@ const getErrorMessage = (e) => {
 const setToken = (token) => {
   cookie.set("token", token);
   Router.push("/");
+};
+
+export const redirect = (ctx, location) => {
+  if (ctx.req) {
+    ctx.res.writeHead(302, { Location: location });
+    ctx.res.end();
+  } else {
+    Router.push(location);
+  }
 };
