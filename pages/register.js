@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -8,14 +8,17 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import * as styles from "../styles/Login.module.css";
 import Button from "@material-ui/core/Button";
+import { register } from "../utils/authUser";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
-    username: "",
+    name: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser((prev) => ({ ...prev, [name]: value }));
@@ -26,24 +29,39 @@ const RegisterPage = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  const handleError = (errorMsg) => {
+    toast.error(errorMsg);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    await register(user, handleError, setLoading);
+  };
+
   return (
     <div className={styles.login}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <FormControl>
           <InputLabel htmlFor="email">Email address</InputLabel>
           <Input
             id="email"
             name="email"
+            disabled={loading}
+            type="email"
             value={user.email}
             onChange={handleChange}
           />
         </FormControl>
         <FormControl>
-          <InputLabel htmlFor="username">Username</InputLabel>
+          <InputLabel htmlFor="name">name</InputLabel>
           <Input
-            id="username"
-            name="text"
-            value={user.username}
+            id="name"
+            name="name"
+            disabled={loading}
+            type="text"
+            value={user.name}
             onChange={handleChange}
           />
         </FormControl>
@@ -55,6 +73,7 @@ const RegisterPage = () => {
             value={user.password}
             onChange={handleChange}
             name="password"
+            disabled={loading}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -68,7 +87,12 @@ const RegisterPage = () => {
             }
           />
         </FormControl>
-        <Button color="primary" variant="contained">
+        <Button
+          color="primary"
+          variant="contained"
+          type="submit"
+          disabled={loading}
+        >
           Register
         </Button>
       </form>
