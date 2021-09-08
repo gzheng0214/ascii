@@ -9,3 +9,7 @@
 .toolbar button:not(:last-child) {
   margin-right: 3rem;
 }
+
+.active {
+  background-color: #178fff !important;
+}
