@@ -56,7 +56,7 @@ const RegisterPage = () => {
           />
         </FormControl>
         <FormControl>
-          <InputLabel htmlFor="name">name</InputLabel>
+          <InputLabel htmlFor="name">Name</InputLabel>
           <Input
             id="name"
             name="name"
