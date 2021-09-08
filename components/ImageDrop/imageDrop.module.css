@@ -1,0 +1,37 @@
+.imgContainer {
+  height: 35rem;
+  width: 35rem;
+  border: 4px dashed black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content svg {
+  width: 10rem;
+  height: 10rem;
+}
+
+.content span {
+  font-size: 1.8rem;
+}
+
+.content img {
+  max-width: 32rem;
+  max-height: 32rem;
+  object-fit: contain;
+}
+
+.imgContainer.highlight {
+  border: 4px dashed lightblue;
+}
