@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const AsciiSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User" },
-    name: { type: String, required: true, trim: true },
+    title: { type: String, required: true, trim: true },
     text: { type: String, required: true },
   },
   { timestamps: true }
